@@ -16,6 +16,37 @@ Puede ser compilado usando IDEs como Apache NetBeans o Visual Studio Code, con s
 
 Se requiere instalar las dependencias [External Lib](./external-lib/). En Visual Studio Code se puede importar mediante **Referenced Libraries**.
 
+## Compilación y ejecución desde la terminal
+
+Si prefieres no usar un IDE, puedes compilar y ejecutar el proyecto directamente desde la terminal.
+
+### Linux/macOS
+
+1.  **Compilar:**
+    Este comando compila todos los archivos `.java` del directorio `src` y guarda los `.class` en `bin`.
+    ```sh
+    javac -d bin -cp "external-lib/InvernaderoLib.jar" $(find src -name "*.java")
+    ```
+
+2.  **Ejecutar:**
+    Este comando ejecuta el programa, especificando la ruta a las clases compiladas y a la librería externa.
+    ```sh
+    java -cp "bin:external-lib/InvernaderoLib.jar" invernadero.Simulador
+    ```
+
+### Windows
+
+1.  **Compilar (usando PowerShell):**
+    ```powershell
+    javac -d bin -cp "external-lib/InvernaderoLib.jar" (Get-ChildItem -Recurse -Filter *.java src).FullName
+    ```
+
+2.  **Ejecutar:**
+    En Windows, el separador del classpath es `;` en lugar de `:`.
+    ```powershell
+    java -cp "bin;external-lib/InvernaderoLib.jar" invernadero.Simulador
+    ```
+
 # Documentación
 
 En el [Manual de usuario](./documentation/Manual_Usuario_Proyecto_Invernadero_II.pdf) se describe el funcionamiento de la interfaz de usuario del programa, así como las opciones y reglas del juego.
